@@ -1,6 +1,6 @@
-# nodeExpressSqlite3Jade
+# nodeExpressMongoJade
 
-A basic example showcasing an sqlite3 Database with server side rendering
+A basic example showcasing an Mongo Database with server side rendering
 
 ## Installation
 
