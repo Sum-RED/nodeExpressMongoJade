@@ -1,0 +1,74 @@
+extends layout
+
+block content
+  h1 Songs
+
+
+  if err
+    div.alert.alert-danger= err
+
+  if msg
+    div.alert.alert-success= msg
+
+  .row
+    .col-8
+      h2 Current songs
+      div
+        each s in songs
+          form.p-2(action="/songs/delete" method="POST")
+            input.flex-shrink-1.m-1(style="min-width:20px" type="hidden" name="_id" value=s._id)
+
+            label.form-group Name:
+              input.form-control.m-1(style="min-width:20px" type="text" name="Name" value=s.Name)
+            label.form-group Milliseconds:
+              input.form-control.m-1(style="min-width:20px" type="number" name="Milliseconds" value=s.Milliseconds)
+            .form-group
+              button.m-1.btn.btn-danger(type="submit" formaction="/songs/delete") X
+              button.m-1.btn.btn-secondary(type="submit" formaction="/songs/update") Update
+            hr
+
+      nav(aria-label="Page navigation example")
+        ul(class="pagination")
+          li(class="page-item")
+            a(class="page-link" href="/songs?page=1") 1
+
+          li(class="page-item")
+            a(class="page-link" href="/songs?page=2") 2
+          li(class="page-item")
+            a(class="page-link" href="/songs?page=3") 3
+
+    .col-4
+      h2 Create new song
+
+      form(action="/songs/create", method="post")
+        .form-group
+          label Name
+            input.form-control(type="text", name="Name")
+
+        .form-group
+          label Duration
+            input.form-control(type="number", name="Milliseconds", value = 1000)
+
+        button.btn.btn-primary(type="submit") Create New Song
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//- then end
